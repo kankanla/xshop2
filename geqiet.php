@@ -45,7 +45,7 @@ include_once('C:\htdocs\doc\acclog.php');
 	public function xml(){
 		
 		$urls = array(//'http://loto6.pa.land.to/q.php?q=',
-					'http://www.dodofei.com/q.php?q=',
+					'http://www.yahoo.com/q.php?q=',
 					//'http://asus.sitemix.jp/q.php?q='
 					);
 		
