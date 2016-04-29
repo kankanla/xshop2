@@ -1,8 +1,9 @@
-﻿<?php
-error_reporting(0);
+<?php
+// error_reporting(0);
 date_default_timezone_set('Asia/Tokyo');
-error_reporting(0);
+// error_reporting(0);
 include_once('into_qie_db.php');
+include_once('C:\htdocs\doc\acclog.php');
 /* 
  *  [oauth_token] => 1453928912-05D7JSAISmqn6Oi9tEDwYxsmdKf2x1xFeNAG0dK
  *  [oauth_token_secret] => ll0C33vVbYglaWOYl9lkgqsOt7ShgSYgWTAwxnyU3xEE9
@@ -26,7 +27,6 @@ include_once('into_qie_db.php');
 	public $re_url;
 	
 	public function getNewQuestionList(){
-		
 		$apiurl='http://chiebukuro.yahooapis.jp/Chiebukuro/V1/getNewQuestionList';
 		//$para['appid']='dj0zaiZpPXVUTThlTks2dklTbCZkPVlXazljek5STVZCaE4yY21jR285TUEtLSZzPWNvbnN1bWVyc2VjcmV0Jng9ZDc-'; //gene_cc
 		$para['appid']='dj0zaiZpPUEzYW1rNjE3NGMxcSZzPWNvbnN1bWVyc2VjcmV0Jng9OTA-';	//xshop2
@@ -37,7 +37,7 @@ include_once('into_qie_db.php');
 		$para['results']='1';
 		$para['mobile_flg']='';
 		$para['image_flg']='';
-		$para['output']='XML';
+		$para['output']='json';
 		$paraurl=http_build_query($para);
 		$this->re_url=$apiurl.'?'.$paraurl;
 	}
@@ -49,27 +49,22 @@ include_once('into_qie_db.php');
 					//'http://asus.sitemix.jp/q.php?q='
 					);
 		
-		$temp = simplexml_load_file($this->re_url,'SimpleXMLElement',LIBXML_NOCDATA );
-		$qid = $urls[array_rand($urls)].$temp->Result->QuestionId;
-		$data = array(mb_strimwidth($temp->Result->Content,0,175,',','UTF-8')."...\n\n".$qid);
+		$json = json_decode(file_get_contents($this->re_url));
+		$qqid = $json->ResultSet->Result[0]->QuestionId;
+		$qitm = $json->ResultSet->Result[0]->Content;
 
-		if(stristr($temp->Result->Content, 'http')){
-			$this->getNewQuestionList();
-			$this->xml();
+		$temp = new insert_qe();
+		$temp->title_qie($qqid, mb_strimwidth($qitm,0,3000,',','UTF-8'));
+
+		$qid = $urls[array_rand($urls)].$qqid;
+		$data = array(mb_strimwidth($qitm,0,175,',','UTF-8')."...\n\n".$qid);
+
+		if(stristr($json->ResultSet->Result[0]->Content, 'http')){
+			exit();
 		}
 		
 		echo json_encode($data);
-		
-		
+		exit();
 	}
-	
-	//tt
-	
  }
- 
- 
-
- 
- 
-
-?>
+ ?>
