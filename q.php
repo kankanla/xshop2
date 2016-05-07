@@ -326,7 +326,7 @@ echo '<div id = "main">';
 			if($x->content()){
 				$tt = str_replace("\n",'<br>',$x->content());
 				echo "<div id = \"title_txt\" link_my = \"{$x->local_db()['link_my']}\">";
-					echo "<p>{$tt}<br>(-_-)<br>Server_only</p>";
+					echo "<p>{$tt}</p>";
 				echo '</div>'; 	// "<div id = \"title_txt\" link_my = \"{$x->local_db()['link_my']}\">";
 			}else{
 				echo '<div id = "top5_area">';
