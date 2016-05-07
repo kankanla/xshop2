@@ -2,7 +2,7 @@
 // 2016/04/29 22:16:20
 namespace cdb;
 
-define('DB_NAME', 'qie.db');
+define('DB_NAME', 'C:\htdocs\doc\xshop2\qie.db');
 // define('DEBUG','false');
 
 echo __NAMESPACE__ ;

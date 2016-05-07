@@ -1,0 +1,194 @@
+/*qiev2.css*/
+/*2016/04/30 21:19:02*/
+/*Mobile*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	font-style: normal;
+	box-sizing: border-box;
+	/* font-family: "Segoe UI","微軟正黑體","Microsoft JhengHei","Arial","新細明體"; */
+	/* yahoo.com.tw */
+	font-family: 'Helvetica Neue',Helvetica,Arial,STHeiti,'Microsoft JhengHei',微軟正黑體,sans-serif;  
+}
+
+body{
+	width:100%;
+}
+
+#page_top_title{
+	background-color:  #606060;
+}
+
+#page_top_title p{
+    color: rgba(240, 236, 236, 0.92);
+    font-size: 24px;
+    font-weight: bold;
+        letter-spacing: 10px;
+    padding: 9px;
+}
+
+#page_footerpr_title{
+        text-align: center;
+	
+}
+
+#page_footerpr_title p{
+    color: rgba(240, 236, 236, 0.92);
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    padding: 9px;
+}
+
+.page_top_footerpr_color{
+	background-color:  #606060;
+}
+
+#title_txt{
+	background-color: rgb(234, 206, 122);
+    line-height: 30px;
+	padding: 25px 8px;
+}
+
+#answer_texts{
+    /*background-color: #EDEDEA;*/
+}
+
+.color_2{
+	width:100%;
+	background-color: #CDCDBE;
+}
+
+.color_1{
+	width:100%;
+	background-color: #DDDDDA;
+}
+
+.an_items{
+	line-height: 30px;
+	padding:8px;
+	display:flex;
+	flex-direction:row;
+}
+
+.an_items img{
+	/*margin: 3px;*/
+    height: 25px;
+    opacity: 0.3;
+}
+
+.an_list{
+	margin: 0px 0px 0px 10px;
+	flex-basis:8;
+	width: inherit;
+	word-break: break-all;
+}
+
+.del_my{
+	    text-align: right;
+}
+
+.del_my p{
+	    display: inline-block;
+}
+
+
+.an_icon_img{
+	width: 35px;
+	/*margin: 2px;*/
+}
+
+#textarea{
+	width:300px;
+	height:100px;
+	background-color: #E3E3D6;
+}
+
+#local_cmd{
+	line-height: 30px;
+	padding:8px;
+	display:flex;
+	flex-direction:row;
+	background-color: rgba(177, 196, 53, 0.44);
+}
+
+.local_icon_img img{
+    height: 25px;
+    opacity: 0.7;
+}
+
+.local_icon_img{
+		width: 40px;
+}
+
+#adse_4{
+    text-align: center;
+    vertical-align: middle;
+    background-color: #DDE5A6;
+}
+
+#adse_5{
+    text-align: center;
+    vertical-align: middle;
+    background-color: #DDE5A6;
+}
+
+#adse_6{
+    text-align: center;
+    vertical-align: middle;
+    background-color: #DDE5A6;
+}
+
+#adsense_foot{
+	    text-align: center;
+    margin: 9px;
+}
+
+
+#reg_text{
+    letter-spacing: 10px;
+    padding: 9px;
+    background-color: #DDE5A6;
+            text-align: center;
+        padding: 0px 12px 5px 0px;
+ font-size: 24px;
+    font-weight: bold;
+
+}
+
+#reg_text input{
+    font-size: 18px;
+    font-weight: bold;
+        letter-spacing: 10px;
+    /*padding: 9px;*/
+}
+
+.top5_link{
+    margin: 40px;
+    line-height: 26px;
+}
+
+#top5_area{
+	background-color: #F2DEB1;
+	    display: inline-block;
+	        width: 100%;
+}
+
+#help{
+	background-color: #DDE5A6;
+	padding: 0px 0px 0px 50px;
+}
+
+#help p{
+	font-size: 9px;
+}

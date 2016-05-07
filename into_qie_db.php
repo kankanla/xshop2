@@ -1,12 +1,17 @@
 <?php
 // 2016/04/29 22:16:12
 
-include_once('rand_uniqid.php');
-// include_once('C:\htdocs\doc\acclog.php');
+include_once('C:\htdocs\doc\rand_uniqid.php');
+if($_SERVER['HTTP_HOST'] != '192.168.11.10'){
+	include_once('C:\htdocs\doc\acclog.php');
+}
+
 
 
 class insert_qe{
-	public $db_name = 'qie.db';
+	
+	public $db_name = 'C:\htdocs\doc\xshop2\qie.db';
+
 	public function title_qie($qeid,$q_title){
 		if(file_exists($this->db_name)){
 			$db = new sqlite3($this->db_name);
