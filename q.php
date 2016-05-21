@@ -42,7 +42,7 @@ class new_qie{
 	}
 
 	public function local_db_anawer($link_up){
-// 2016/05/05 18:28:32
+		// 2016/05/05 18:28:32
 		// ローカルに投稿した回答
 		$db = new sqlite3($this->db_name);
 		$db->busyTimeout(10000);
@@ -67,6 +67,19 @@ class new_qie{
 		$temp2 = $temp->execute();
 		$val = $temp2->fetchArray(SQLITE3_ASSOC);
 		return $val;
+	}
+
+	public function local_db_show_count($qid){
+		// 表示回数統計
+		// show_count最初のDBにない項目のため、コマンドラインで追加した。
+		// alter table items add column show_count INTEGER DEFAULT 0;
+		// update items set show_count = show_count+1 where qeid = ??;
+		$db = new sqlite3($this->db_name);
+		$db->busyTimeout(10000);
+		$sql = "update items set show_count = show_count + 1 where qeid = '{$qid}'";
+		// echo $sql;
+		$db->exec($sql);
+		$db->close();
 	}
 
 	public function qieid($qid){
@@ -178,16 +191,9 @@ if ($_SERVER['REMOTE_ADDR'] != '220.1.8.32'){
 	include_once('C:\htdocs\doc\xshop2\sqlite3.php');
 	$xxx = new sql3;
 	$x = new new_qie;
-		// echo '<pre>';
 		if(array_key_exists('q',$_REQUEST)){
 			$x->qieid($_GET['q']);
-			$xxx -> insert ($_GET['q'],mb_substr($x->content()['b'],0,80,"utf-8"));
-			// print_r($x->content()[0]);
-			// echo '<br>';
-			// print_r($x->local_db());
-			// echo '<br>';
-			// $x->answer();
-			// echo '<br>';
+			$xxx->insert($_GET['q'],mb_substr($x->content(),0,80,"utf-8"));
 		}else{
 			exit();
 		}
@@ -200,13 +206,11 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 
 // 画面サイズをチャックし、CSSを適応
 if(stristr($_SERVER['HTTP_USER_AGENT'],'Mobile')){
-	echo '<link rel="stylesheet" type="text/css" href="qiev2.css" media="screen,all" />';
+	echo '<link rel="stylesheet" type="text/css" href="./xshop2/qiev2.css" media="screen,all" />';
 }else{
-	echo '<link rel="stylesheet" type="text/css" href="qiev2.css" media="screen,all" />';
+	echo '<link rel="stylesheet" type="text/css" href="./xshop2/qiev2.css" media="screen,all" />';
 	// echo 'disktop';
 }
-
-
 
 $temp = mb_substr($x->content()['0'],0,64,"utf-8");
 echo "<title>{$temp}</title>";
@@ -218,7 +222,8 @@ echo '</head>';
 echo '<body>';
 echo '<div id = "main">';
 	if($x->local_db()){
-		// Localに記載した場合。
+		// Localにitemsに記載あった場合。
+		$x->local_db_show_count($x->local_db()['qeid']);
 		echo '<div id = "type1">';
 			echo '<div id ="page_top_title" class ="page_top_footerpr_color">';
 			echo '<p>詳細内容</p>';
@@ -233,6 +238,11 @@ echo '<div id = "main">';
 					echo "<p>{$tt}<br>...</p>";
 				}
 			echo '</div>'; 	// "<div id = \"title_txt\" link_my = \"{$x->local_db()['link_my']}\">";
+			
+			// アドセスエリア
+			echo '<div id = "adse_5">';
+				echo $sps5;
+			echo '</div>'; //'<div id = "adse_1">'
 
 			// ここだけの話し編集エリア
 			echo '<div id = "local_cmd">';
@@ -243,17 +253,12 @@ echo '<div id = "main">';
 			echo '<p>#投稿はリツイートしません。</p>';
 			echo '<p>#画面をリフレッシュ後に削除できます。</p>';
 			echo '</div>';
-			
 
 			// ここだけの話し編集エリア 送信ボタン
 			echo '<div id = "reg_text">';
 				echo '<input type="button" id = "reg_button" name="xxxxx" value=" 回答投稿 ">';
 			echo '</div>'; //'<div id = "reg_text">';
 
-			// アドセスエリア
-			echo '<div id = "adse_5">';
-				echo $sps5;
-			echo '</div>'; //'<div id = "adse_1">'
 
 			// 回答エリア
 			echo '<div id = "answer_texts">';
