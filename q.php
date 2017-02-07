@@ -1,9 +1,9 @@
 <?php
 // 2016/04/30 9:36:58 
 // 例
-// http://www.dodofei.com/qn.php?q=11158789006	複数の答え
-// http://www.dodofei.com/q.php?q=11158806151
-// http://www.dodofei.com/qn.php?q=11158772306	ベストアンサー
+// http://www.uuu.com/qn.php?q=11158789006	複数の答え
+// http://www.uuu.com/q.php?q=11158806151
+// http://www.uuu.com/qn.php?q=11158772306	ベストアンサー
 
 
 
